@@ -1,0 +1,896 @@
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: "Book Antiqua", Palatino, "Palatino Linotype";
+    font-size: 25px;
+    font-style: normal;
+    --Text-color: #000;
+    color: var(--Text-color);
+    --bg-color: #F5F5F5;
+    background-color: var(--bg-color);
+    --blue-accent: #686868;
+    overflow-x: hidden;
+    --Whatsapp-text-color: #fff;
+    --Whatsapp-bg-color: #1ebea5;
+    --highlight-color: #60beb0;
+    --highlight-color-trans: rgba(174, 214, 241,0.7);
+    --highlight-color-notrans: rgba(174, 214, 241,0.9);
+    --highestvalue: 10000;
+}
+
+/*Custom Scroll Bar*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue-accent); 
+    border-radius: 10px;
+    border: 1px solid var(--Text-color);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    
+    background: var(--highlight-color); 
+  }
+
+/*Loading Animation*/
+
+.LoadingAnimation{
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: var(--bg-color);
+}
+
+.centerPlacement{
+    width: 80px;
+    margin: auto;
+    margin-top: 200px;
+}
+
+  .LoadingScreen {
+    z-index: 1000;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .LoadingScreen div {
+    animation: LoadingScreen 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .LoadingScreen div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--Text-color);
+    margin: -4px 0 0 -4px;
+  }
+  .LoadingScreen div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .LoadingScreen div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .LoadingScreen div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .LoadingScreen div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .LoadingScreen div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .LoadingScreen div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .LoadingScreen div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .LoadingScreen div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .LoadingScreen div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .LoadingScreen div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .LoadingScreen div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .LoadingScreen div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .LoadingScreen div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .LoadingScreen div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .LoadingScreen div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .LoadingScreen div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+
+  /* Safari */
+  @-webkit-keyframes LoadingScreen {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes LoadingScreen {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+/*Header*/
+
+    /*Mobile*/
+#Mobile_Vcube{
+    display: none;
+    z-index: 999;
+    width: 100%;
+    position: fixed;
+}
+
+#mobile_TopLayout{
+    height: 40px;
+    width: 100%;
+}
+
+.background{
+    background-color: var(--highlight-color-trans);
+    transition-duration: 1s;
+}
+
+.button{
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    float: right;
+    background-color: var(--Text-color);
+}
+
+.button:hover{
+    background-color: var(--Text-color);
+}
+
+#overlayMobile{
+    transition-duration: 1s;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.MobileOverlay > ul{
+    padding: 0px;
+}
+
+.MobileOverlay > ul > li{
+    display: flex;
+}
+
+.MobileOverlay > ul > li > a{
+    text-decoration: none;
+    margin: auto;
+    padding: 25px 0px 25px 0px;
+    cursor: pointer;
+    color: var(--bg-color);
+}
+
+
+.line{
+    border-top: 2.5px solid var(--bg-color);
+    margin: 4px;
+}
+
+/*Top Navbar Layout*/
+.navbarbtn_layout{
+    width: 100%;
+    height: 5vh;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /*Open Close Navbar*/
+  #NavbarButton{
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    z-index: var(--highestvalue);
+    position: fixed;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  #NavbarButton:hover > div{
+    border-top: 2.5px solid var(--highlight-color);  
+  }
+  
+  #NavbarButton > div{
+    transition-duration: 1s;
+    border-top: 2.5px solid var(--blue-accent);
+    margin: 7px;    
+  }
+  
+  .line1{
+    transition-duration: 1s;
+    transform: rotate(-45deg) translate(-6px ,8px);
+  }
+  .line2{
+    transition-duration: 1s;
+    opacity: 0;
+  }
+  .line3{
+    transition-duration: 1s;
+    transform: rotate(45deg) translate(-6px, -7px);
+  }
+
+  /*Main Content*/
+#content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-duration: 0.5s;
+    background: var(--bg-color);
+  }
+  
+  .Main_content{
+    height: 2000px;
+    padding: 0;
+  }
+
+    /*Computer*/
+.TopLayout{
+    margin-top: 5px;
+    position: fixed;    
+    left: 0;
+    right: 0;
+    z-index:3;
+    transition-duration: 1s;
+    height: 57px;
+    text-shadow: -3px 0 6px #fff, 0 3px 6px #fff, 3px 0 6px #fff, 0 -3px 6px #fff;
+}
+
+.not_transparant{
+    z-index: 5;
+    margin-top: -4px;
+    background-color: var(--highlight-color-trans);
+    text-shadow: none;
+    transition-duration: 1s;
+}
+
+.TopLayout > ul > li{
+    list-style-type: none;
+    float: right;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.TopLayout > ul > li:hover{
+    background-color: var(--Text-color);
+    transition-duration: 0.5s;
+}
+
+
+/*Vcube Logo*/
+
+.Vcube_logo{
+    margin: -14px 0px 0px 0px;
+    padding: 0px 10px 10px 4px;
+    transition-duration: 1s;
+    width: 280px;
+    transition: width 2s, height 2s;
+    border: none;
+    z-index: 10;
+    -webkit-filter: drop-shadow(0px 0px 10px #fff);
+    filter: drop-shadow(0px 0px 10px #fff);
+}
+
+.not_transparant_Logo{
+    z-index: 6;
+    width: 100px;
+    border: none;
+    animation: alternate;
+    transition-duration: 1s;
+    transition: width 2s, height 2s;
+}
+
+.TopLayout > ul > li > a{
+    text-decoration: none;
+    display: inline-block;
+    color: var(--Text-color);
+    font-weight: bold;
+    text-shadow: -3px 0 6px #fff, 0 3px 6px #fff, 3px 0 6px #fff, 0 -3px 6px #fff;
+}
+.TopLayout > ul > li > a:hover{
+    text-decoration: none;
+    color: #fff;
+    text-shadow: none;
+    /*text-shadow: -3px 0 6px #fff, 0 3px 6px #fff, 3px 0 6px #fff, 0 -3px 6px #fff;*/
+}
+
+#Body_Vcube{
+    z-index: 1;
+}
+
+/*Mobile Logo*/
+.logo_Width{
+    width: 180px;
+    margin: -7px 0px 0 4px;
+    padding: 0 0 0 0;
+}
+
+.small_Logo{
+    width: 64px;
+    border: none;
+    transition-duration: 1s;
+    transition: width 2s, height 2s;
+}
+
+/*Carousal*/
+
+.carousel{
+    width: 100vw;
+}
+
+.carousel-caption{
+    font-family: "Book Antiqua", Palatino, "Palatino Linotype";
+    font-weight: bold;
+    font-size: 40px;
+    color: var(--Text-color);
+    padding-bottom: 280px;
+    text-shadow: -3px 0 6px #fff, 0 3px 6px #fff, 3px 0 6px #fff, 0 -3px 6px #fff;
+    z-index: 1;
+}
+
+.caption_Img{
+    display: inline;
+}
+
+.carousel-indicators{
+    z-index: 1;
+}
+
+/*Body*/
+.Body > div{
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+}
+
+/*About Us*/
+#Aboutus_Vcube{
+    margin: auto;
+    color: var(--Text-color);
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    width: 97%;
+}
+
+#Aboutus_Vcube > div > h2{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#Aboutus_Vcube > div > p{
+    text-align: center;
+}
+
+/*Services*/
+
+#Services_Vcube{
+    width: 95%;
+    margin: auto;
+    text-align: justify;
+    padding: 10px;
+    padding-top: 100px;
+}
+
+#Services_Vcube > h2{
+    text-align:center;
+    text-decoration: underline;
+}
+
+.card{
+    border: 1px solid var(--Text-color);
+    background-color: var(--bg-color);
+    display: inline-block;
+    max-width: 300px;
+    margin: 3px auto;
+}
+
+.card-header{
+    background-color: var(--highlight-color);
+    border-bottom:1px solid var(--highlight-color);
+    text-align: center;
+}
+
+.card-body{
+    max-height: 300px;
+    overflow-y: scroll;
+    font-family: Helvetica;
+    font-size: 17px;
+}
+
+.card-body > a{
+    text-decoration: none;
+    color:var(--Text-color);
+}
+
+.card-body > a:hover{
+    text-decoration: underline;
+    color:var(--Text-color);
+}
+
+.btn-primary{
+    background: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+.btn-primary:active{
+    background: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+.btn-primary:hover{
+    background: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+.btn-primary:focus{
+    background: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+.DefinitionTerm{
+    font-weight: bold;
+}
+
+.Definition{
+    text-indent: 50px;
+}
+
+.btn-link{
+    color: var(--Text-color);
+}
+
+.btn-link:hover{
+    text-decoration: none;
+    color: white;
+    text-shadow: -6px 0 8px var(--Text-color), 0 6px 8px var(--Text-color), 6px 0 8px var(--Text-color), 0 -6px 8px var(--Text-color);
+}
+
+.btn-link:focus{
+    color: white;
+    text-shadow: -6px 0 8px var(--Text-color), 0 6px 8px var(--Text-color), 6px 0 8px var(--Text-color), 0 -6px 8px var(--Text-color);
+    text-decoration: none;
+}
+
+/*What we do*/
+#Whatwedo_Vcube{
+    padding-top: 50px;
+    width: 100vw;
+    text-align: center;
+}
+
+#Whatwedo_Vcube > h2{
+text-decoration: underline;
+}
+
+#Whatwedo_Vcube > div{
+    max-width: 100%;
+}
+
+#Whatwedo_Vcube > div > div{
+    margin: 10px auto;
+}
+
+#Whatwedo_Vcube > div > div > p{
+    text-align: center;
+}
+
+.Whatwedo_Image{
+    max-width: 100%;
+}
+
+/*Example Works*/
+#ExampleWorks_Vcube{
+    text-align: center;
+    padding: 25px;
+    padding-top: 50px;
+}
+
+#ExampleWorks_Vcube > h2 >a{
+    color: var(--Text-color);
+    text-decoration: underline;
+    padding: 10px;
+}
+
+.ExampleWorks_Image{
+    position: relative;
+    min-height: 145px;
+    max-height: 100%;
+    min-width: 161px;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.GotoGallery{
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    padding-top: 70px;
+    color: var(--Text-color);
+    text-shadow: -6px 0 8px #fff, 0 6px 8px #fff, 6px 0 8px #fff, 0 -6px 8px #fff;
+    transition-duration: 1s ease;
+}
+
+.ExampleWorks_Image:hover .GotoGallery{
+    opacity: 1;
+    transition-duration: 1s ease;
+}
+
+/*projects_Vcube*/
+
+#projects_Vcube{
+    text-align: center;
+    padding: 25px;
+    padding-top: 50px;
+}
+
+#projects_Vcube > h2{
+    text-decoration: underline;
+}
+
+/*Footer*/
+footer{
+    margin-top: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--highlight-color);
+}
+
+/*Map*/
+
+.addressalignment > div{
+    padding: 10% 0 10% 0;
+}
+
+.address{
+    margin: auto;
+    width: 100%;
+    height: fit-content;
+    font-size: 20px;
+    text-align: center;
+}
+
+.address > p > a{
+    color: var(--Text-color);
+}
+
+.address > p > a:hover{
+    text-decoration: none;
+    color: var(--Text-color);
+}
+
+.mapouter{
+    position:relative;
+    text-align:right;
+    height:300px;
+    width:500px;
+}
+
+.gmap_canvas{
+    overflow:hidden;
+    background:none!important;
+    height:300px;
+    width:40%;
+    display: inline-block;
+    margin: auto;
+}
+
+.BottomLogo{
+    width: 100%; 
+}
+
+.row > a{
+    text-align: center;
+}
+
+/*Logo*/
+.Logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: none;
+    background-color: rgba(174, 214, 241,0.0);
+    color: var(--Text-color);
+    text-align: center;
+}
+
+.Facebook{
+    /*Facebook Color - #3578E5*/
+    padding: 3px 0 0 0;
+}
+/*
+.Instagram{
+}
+.LinkedIn{
+}
+.Google{   
+}
+.Pinterest{
+}
+*/
+
+/*Whatsapp Chat*/
+
+#navbarbtn_Line_Whatsapp{
+    float: right;
+    padding: 0px 0px 1px 8px;
+    position: fixed;
+    right: 3px;
+    color: var(--Whatsapp-bg-color);
+}
+
+#navbarbtn_Line_Whatsapp > a{
+    color: #1ebea5;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.Logo{
+    color: #1ebea5;
+}
+
+.WhatsappName{
+    color: var(--blue-accent);
+    padding-right: 10px;
+}
+
+.WhatsappName:hover{
+    text-decoration: underline;
+    color: var(--highlight-color);
+}
+
+h2{
+    margin-bottom: 1.5rem;
+}
+
+/*Animation*/
+.fadeinAnimation{
+    opacity: 0;
+}
+
+/*Mobile View*/
+
+@media screen and (min-width: 1200px){
+    .container{
+        max-width: 1200px;
+    }
+    
+    #Aboutus_Vcube{
+        margin-top: 100px;
+        padding-top: 100px;
+    }
+}
+
+/*@media screen and (min-width:700px){
+    .carousel-caption{
+        text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+    }
+}*/
+
+@media screen and (max-width: 1230px) {
+    
+    .carousel-caption > p{
+        font-size: 30px;
+    }
+
+    .carousel-caption{
+        padding-bottom: 100px;
+    }
+
+    #Aboutus_Vcube > div{
+        margin: 25px 15px; 
+    }
+
+    #Whatwedo_Vcube{
+        height: auto;
+    }
+    
+    #Whatwedo_Vcube > div{
+        margin: auto;
+    }
+
+    .example_box{
+        width: 50%;
+    }
+
+    #ExampleWorks_Vcube{
+        height: auto;
+    }
+
+    #ExampleWorks_Vcube > div{
+        transform: translate(0%, 0%);
+    }
+
+    .gmap_canvas{
+        width: 50%;
+    }
+    .SocialMedia > a > button{
+        margin: auto;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    
+    
+    
+    #Mobile_Vcube > .Vcube_logo{
+        width: 200px;
+    }
+
+    .carousel-caption > p{
+        font-size: 30px;
+    }
+    
+    .carousel-caption{
+        padding-bottom: 50px;
+    }
+
+    .TopLayout{
+        display: none;
+    }
+
+    #Mobile_Vcube{
+        display: block;
+    }
+
+    .SocialMedia > a{
+        width: 16%;
+        padding: 0px;
+    }
+
+    #Aboutus_Vcube > div{
+        margin: 25px 5px; 
+    }
+}
+
+@media screen and (max-width: 635px){
+
+    .carousel-caption > p{
+        font-size: 20px;
+    }
+
+    .example_box{
+        width: 100%;
+    }
+
+    .gmap_canvas{
+        align-items: center;
+        width: 100%;
+        padding: 0px;
+    }
+     
+    .address{
+        width: auto;
+    }
+}
+
+/*Navigation Bar*/
+
+#Navbar{
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: var(--blue-accent); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition-duration: 0.5s;
+  }
+  
+  .MenuLogo{
+    text-align: center;
+    opacity: 0;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .MenuItems{
+    opacity: 0;
+    margin-top:20px;
+  }
+  
+  .SubMenuItems > li ,.MenuItems > li{
+    list-style: none;
+    text-align: left;
+    font-size: 20px;
+    padding: 5px;
+    padding-top: 10px;
+  }
+  
+  .SubMenuItems > li > a ,.MenuItems > li > a{
+    text-decoration: none;
+    color: var(--highlight-color);
+  }
+  
+  .SubMenuItems > li > a:hover ,.MenuItems > li > a:hover{
+    background-color: var(--highlight-color);
+    color: var(--blue-accent);
+    transition-duration: 0.3s;
+  }
+  
+  .SubMenuItems > li > a:focus ,.MenuItems > li > a:focus{
+    background-color: var(--highlight-color);
+    color: var(--blue-accent);
+    transition-duration: 0.3s;
+  }
+
+@media screen and (max-width: 540px){
+    
+}
+
+@media screen and (max-width: 450px){
+    #Aboutus_Vcube > div {
+        transform: translate(0%, 2%);
+    }
+}
