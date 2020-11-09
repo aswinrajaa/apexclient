@@ -237,6 +237,7 @@ body{
     height: 5vh;
     display: block;
     position: relative;
+    z-index: var(--highestvalue);
     overflow: hidden;
   }
   
@@ -246,7 +247,6 @@ body{
     height: 40px;
     background: transparent;
     border: none;
-    z-index: var(--highestvalue);
     position: fixed;
     cursor: pointer;
     display: inline-block;
@@ -441,7 +441,7 @@ body{
 }
 
 .card{
-    border: 1px solid var(--Text-color);
+    border: none;
     background-color: var(--bg-color);
     display: inline-block;
     max-width: 300px;
@@ -455,10 +455,11 @@ body{
 }
 
 .card-body{
-    max-height: 300px;
+    height: 250px;
     overflow-y: scroll;
     font-family: Helvetica;
     font-size: 17px;
+    background-color: var(--blue-accent);
 }
 
 .card-body > a{
@@ -711,10 +712,10 @@ h2{
     margin-bottom: 1.5rem;
 }
 
-/*Animation*/
+/*Animation
 .fadeinAnimation{
     opacity: 0;
-}
+}*/
 
 /*Mobile View*/
 
